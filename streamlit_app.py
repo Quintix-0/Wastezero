@@ -1,6 +1,17 @@
-import streamlit as st
+def optimize(n, f, s):
+    x = round(n/(f+s))
+    y=x
+    excess = n - (x*f + y*s)
+    options = [[x, y, excess]]
+    while y > 0:
 
-st.title("Food bank optimizer")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+        if excess >= 0:
+            x += 1
+        else:
+            y -= 1
+        if y <= 0.33*x and x > 2:
+            break
+        excess = n - (x*f + y*s)
+        options.append([x, y, excess])
+
+    return sorted(options, key=lambda x: abs(x[2]))
