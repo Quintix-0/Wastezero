@@ -41,17 +41,17 @@ if st.button("See more"):
 
 
 
-st.write("\n\nCustom ratio:")
+st.write("Custom ratio:")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    x = st.number_input("Family", min_value=0, value=6)
+    x = st.number_input("Units per family", min_value=0, value=4)
 
 with col2:
-    y = st.number_input("Single", min_value=0, value=5)
+    y = st.number_input("Units per single", min_value=0, value=2)
 
 used = families*x + singles*y
 leftover = units_availible - used
 
-st.metric("Excess", leftover)
+st.write("Extra units:", leftover)
